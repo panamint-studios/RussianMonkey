@@ -38,6 +38,7 @@ public class Elevator : MonoBehaviour, IUseable
         m_compartment.transform.parent = transform;
         var initPos = m_floors[floor].transform.localPosition;
         m_compartment.transform.localPosition = AdjustPositionForSprite(initPos);
+        m_compartment.layer = LayerMask.NameToLayer("Ignore Raycast");
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
