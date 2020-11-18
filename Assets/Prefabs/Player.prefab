@@ -558,6 +558,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shootyHand: {fileID: 5411388963133762937}
   bulletPrefab: {fileID: 5489804166875893124, guid: 270d590b571667745866852495e3d067, type: 3}
+  fistPrefab: {fileID: 8552883046249581759, guid: e98748e1c3b58ed499c6bc015254267f, type: 3}
 --- !u!120 &5411388962791969229
 LineRenderer:
   m_ObjectHideFlags: 0
