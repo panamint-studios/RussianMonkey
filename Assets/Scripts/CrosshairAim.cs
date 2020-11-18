@@ -6,6 +6,7 @@ public class CrosshairAim : MonoBehaviour
 {
     public Transform shootyHand;
     public GameObject bulletPrefab;
+    public GameObject fistPrefab;
 
     Transform player;
     LineRenderer lr;
@@ -46,6 +47,23 @@ public class CrosshairAim : MonoBehaviour
         {
             PlayerShoot();
         }
+
+        if (Input.GetKeyDown(KeyCode.Mouse1))
+        {
+            PlayerPunch();
+        }
+    }
+
+    void PlayerPunch()
+    {
+        Vector3 shootDir = transform.position - shootyHand.position;
+
+        Vector3 vectorToTarget = transform.position - shootyHand.position;
+        float angle = Mathf.Atan2(vectorToTarget.y, vectorToTarget.x) * Mathf.Rad2Deg;
+        Quaternion q = Quaternion.AngleAxis(angle, Vector3.forward);
+
+        GameObject fist = Instantiate(fistPrefab, shootyHand.position, q);
+        //Destroy(bullet, 1f);
     }
 
     void PlayerShoot()

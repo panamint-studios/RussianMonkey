@@ -14,7 +14,9 @@ public class EnemyBrain : MonoBehaviour
     {
         Patrolling,
         Wait,
-        Attacking
+        Attacking,
+        Dead,
+        Unconscious
     }
 
     public State currentState = State.Patrolling;
@@ -49,13 +51,21 @@ public class EnemyBrain : MonoBehaviour
         }
     }
     
-    public void TakeDamage(float damage)
+    public void TakeDamage(float damage, bool lethal=true)
     {
         m_Health -= damage;
 
         if(m_Health <= 0)
         {
-            Destroy(gameObject);
+            //Destroy(gameObject);
+            currentState = lethal ? State.Dead : State.Unconscious;
+            EnemyTakedown enemyTakedown = this.GetComponent<EnemyTakedown>();
+            enemyTakedown.PerformAction();
+
+            if(m_FacingRight)
+                transform.eulerAngles = new Vector3(0, 0, 90);
+            else
+                transform.eulerAngles = new Vector3(0, 0, -90);
         }
     }
 

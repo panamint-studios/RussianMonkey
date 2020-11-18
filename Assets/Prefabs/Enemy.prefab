@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 2194880428963781103}
   - component: {fileID: 2194880428963781100}
   - component: {fileID: 510074285}
+  - component: {fileID: 5598659596155684414}
   m_Layer: 9
   m_Name: Enemy
   m_TagString: Enemy
@@ -189,6 +190,18 @@ MonoBehaviour:
   shootyHand: {fileID: 2194880430929933011}
   m_MaxSpeed: 4
   currentState: 0
+--- !u!114 &5598659596155684414
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2194880428963781099}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a65ccf21f51dc045bb510ae11c2ee75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2194880429547662845
 GameObject:
   m_ObjectHideFlags: 0
@@ -575,6 +588,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shootyHand: {fileID: 2194880430929933011}
   bulletPrefab: {fileID: 5489804166875893124, guid: 270d590b571667745866852495e3d067, type: 3}
+  fistPrefab: {fileID: 0}
 --- !u!120 &2194880430770527479
 LineRenderer:
   m_ObjectHideFlags: 0
