@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4457368313883111527}
   - component: {fileID: 4005330317061801256}
-  - component: {fileID: 2822816126068695621}
   - component: {fileID: 1533512192214011314}
+  - component: {fileID: -5741817087448590541}
   m_Layer: 0
   m_Name: Bullet
   m_TagString: Untagged
@@ -72,7 +72,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: b75e1459dfc61eb4e8c4729d79b0e171, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -84,18 +84,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &2822816126068695621
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5489804166875893124}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe54a652408347648adb4f413797d4a6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!58 &1533512192214011314
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -112,3 +100,19 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.026666667
+--- !u!114 &-5741817087448590541
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5489804166875893124}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec0ac621fe23b484ba5370f3f27a5a89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 30
+  damage: 5
+  range: 20
+  lethal: 1

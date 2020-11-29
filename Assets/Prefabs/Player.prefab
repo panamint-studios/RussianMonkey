@@ -70,7 +70,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 0
   m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -128,6 +128,7 @@ GameObject:
   - component: {fileID: 5411388962110761387}
   - component: {fileID: 5411388962110761385}
   - component: {fileID: 5411388962124336841}
+  - component: {fileID: 9079415561177142467}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -317,6 +318,22 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.25, y: 0.68}
   m_EdgeRadius: 0
+--- !u!114 &9079415561177142467
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5411388962121489483}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f57c7f89ac2fbac4abe65e041e14ceb2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shootyHand: {fileID: 5411388963133762937}
+  bulletPrefab: {fileID: 5489804166875893124, guid: 270d590b571667745866852495e3d067, type: 3}
+  fistPrefab: {fileID: 8552883046249581759, guid: e98748e1c3b58ed499c6bc015254267f, type: 3}
+  crosshair: {fileID: 5411388962791969228}
 --- !u!1 &5411388962121489485
 GameObject:
   m_ObjectHideFlags: 0
@@ -417,7 +434,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 0626b924325d1c34cafa6b22297f4e4f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -520,7 +537,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5411388962791969228}
-  - component: {fileID: 5411388962791969227}
   - component: {fileID: 5411388962791969229}
   m_Layer: 0
   m_Name: Crosshair
@@ -544,20 +560,6 @@ Transform:
   m_Father: {fileID: 5411388962121908331}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5411388962791969227
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5411388962791969226}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 34445303133ed694ab636bdd2d1a7b63, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shootyHand: {fileID: 5411388963133762937}
-  bulletPrefab: {fileID: 5489804166875893124, guid: 270d590b571667745866852495e3d067, type: 3}
 --- !u!120 &5411388962791969229
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -757,7 +759,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 0626b924325d1c34cafa6b22297f4e4f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
