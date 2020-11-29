@@ -45,8 +45,7 @@ public class GameState : MonoBehaviour
             return m_instance; 
         }
     }
-    public PlayerState playerState;
-
+    public PlayerState playerState { get; private set; }
     private static GameState m_instance;
 
     private void Awake()
@@ -66,11 +65,5 @@ public class GameState : MonoBehaviour
     private void Init()
     {
         playerState = new PlayerState();
-        playerState.CashUpdated += PlayerState_CashUpdated;
-    }
-
-    private void PlayerState_CashUpdated()
-    {
-        Debug.Log("cash=" + playerState.cash);
     }
 }
