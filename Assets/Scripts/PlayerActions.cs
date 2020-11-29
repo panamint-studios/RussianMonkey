@@ -112,5 +112,15 @@ public class PlayerActions : MonoBehaviour
                 PlayerPunch();
             }
         }
+
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            IUseable useable = (IUseable)other.GetComponent(typeof(IUseable));
+            if (useable != null)
+            {
+                useable.OnUse();
+            }
+        }
+        //if(other.GetComponent<>)
     }
 }
