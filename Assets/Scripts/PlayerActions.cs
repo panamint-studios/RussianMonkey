@@ -55,6 +55,7 @@ public class PlayerActions : MonoBehaviour
         //}
     }
 
+    //This is deprecated. Keeping for now.
     void PlayerPunch()
     {
         Vector3 shootDir = crosshair.position - shootyHand.position;
@@ -103,13 +104,35 @@ public class PlayerActions : MonoBehaviour
     //    Debug.Log(collisionInfo.gameObject.tag);
     //}
 
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.tag == "Enemy_Blindspot")
+        {
+            //Display a fun little icon
+            EnemyBrain enemy = other.GetComponentInParent<EnemyBrain>();
+            enemy.ToggleKnockoutIcon(true);
+        }
+    }
+
+    void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.tag == "Enemy_Blindspot")
+        {
+            //Display a fun little icon
+            EnemyBrain enemy = other.GetComponentInParent<EnemyBrain>();
+            enemy.ToggleKnockoutIcon(false);
+        }
+    }
+
     void OnTriggerStay2D(Collider2D other)
     {
         if(other.tag == "Enemy_Blindspot")
         {
             if (Input.GetKeyDown(KeyCode.Mouse1))
             {
-                PlayerPunch();
+                //PlayerPunch();
+                EnemyBrain enemy = other.GetComponentInParent<EnemyBrain>();
+                enemy.TakeDamage(10, false);
             }
         }
 

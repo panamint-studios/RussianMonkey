@@ -21,7 +21,7 @@ public class ProjectileController : MonoBehaviour
         transform.position += transform.right * speed * Time.deltaTime;
         range -= speed * Time.deltaTime;
 
-        if(range <= 0)
+        if (range <= 0)
         {
             Destroy(gameObject);
         }
@@ -29,10 +29,10 @@ public class ProjectileController : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D col)
     {
-        if (col.gameObject.tag != "Player")
-        {
-            Destroy(gameObject);
-        }
+        //if (col.gameObject.tag != "Player")
+        //{
+        //    Destroy(gameObject);
+        //}
 
         switch (col.gameObject.tag)
         {
@@ -44,6 +44,13 @@ public class ProjectileController : MonoBehaviour
                 enemyBrain.TakeDamage(damage, lethal);
                 Destroy(gameObject);
                 break;
+        }
+
+        //Debug.Log(col.gameObject.name);
+
+        if (col.gameObject.layer == 8)
+        {
+            Destroy(gameObject);
         }
     }
 }

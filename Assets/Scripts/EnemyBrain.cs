@@ -6,6 +6,7 @@ public class EnemyBrain : MonoBehaviour
 {
     public GameObject bulletPrefab;
     public Transform shootyHand;
+    public GameObject knockoutIcon;
     private Transform player;
 
     [SerializeField] private float m_MaxSpeed = 10f;                    // The fastest the player can travel in the x axis.
@@ -44,11 +45,6 @@ public class EnemyBrain : MonoBehaviour
     {
         StateLogic();
         CheckState();
-
-        if (Input.GetKeyDown(KeyCode.K))
-        {
-            m_FacingRight = !m_FacingRight;
-        }
     }
     
     public void TakeDamage(float damage, bool lethal=true)
@@ -58,6 +54,7 @@ public class EnemyBrain : MonoBehaviour
         if(m_Health <= 0)
         {
             //Destroy(gameObject);
+            ToggleKnockoutIcon(false);
             currentState = lethal ? State.Dead : State.Unconscious;
             EnemyTakedown enemyTakedown = this.GetComponent<EnemyTakedown>();
             enemyTakedown.PerformAction();
@@ -197,5 +194,11 @@ public class EnemyBrain : MonoBehaviour
                 StartState(State.Wait);
             }
         }
+    }
+
+    public void ToggleKnockoutIcon(bool showIcon)
+    {
+        if(currentState != State.Dead && currentState != State.Unconscious)
+            knockoutIcon.SetActive(showIcon);
     }
 }
