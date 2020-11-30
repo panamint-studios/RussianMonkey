@@ -82,7 +82,8 @@ public class GameState : MonoBehaviour
         }
     }
     public PlayerState playerState { get; private set; }
-    private AlarmLightsController alarmLightsController;
+    private AlarmLightsController m_alarmLightsController;
+    private AlarmEnemySpawner m_alarmEnemySpawner;
     private static GameState m_instance;
 
     private void Awake()
@@ -102,7 +103,9 @@ public class GameState : MonoBehaviour
     private void Init()
     {
         playerState = new PlayerState();
-        alarmLightsController = GameObject.Find("AlarmLights").GetComponent<AlarmLightsController>();
+        
+        m_alarmLightsController = GameObject.Find("AlarmSystem").GetComponent<AlarmLightsController>();
+        m_alarmEnemySpawner = GameObject.Find("AlarmSystem").GetComponent<AlarmEnemySpawner>();
     }
 
     public void SetGameState(PlayerState.State newState)
@@ -110,11 +113,13 @@ public class GameState : MonoBehaviour
         switch (newState)
         {
             case PlayerState.State.Default:
-                alarmLightsController.StopAlarm();
+                m_alarmLightsController.StopAlarm();
                 break;
             case PlayerState.State.Alarm:
-                if (alarmLightsController)
-                    alarmLightsController.StartAlarm();
+                if (m_alarmLightsController)
+                    m_alarmLightsController.StartAlarm();
+                if (m_alarmEnemySpawner)
+                    m_alarmEnemySpawner.StartAlarm();
                 break;
         }
         playerState.currentState = newState; 

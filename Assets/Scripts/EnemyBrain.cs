@@ -65,6 +65,7 @@ public class EnemyBrain : MonoBehaviour
             currentState = lethal ? State.Dead : State.Unconscious;
             EnemyTakedown enemyTakedown = this.GetComponent<EnemyTakedown>();
             enemyTakedown.PerformAction();
+            StartCoroutine("DisableCollision");
 
             if (hasKey)
             {
@@ -164,7 +165,7 @@ public class EnemyBrain : MonoBehaviour
 
         if(m_CurrentShootTimer >= m_ShootCooldownDuration)
         {
-            Debug.Log("Shooting!!!");
+            //Debug.Log("Shooting!!!");
             Vector3 shootDir = shootyHand.position - player.position;
 
             Vector3 handPos = transform.position + Vector3.Normalize(player.position - transform.position);
@@ -182,6 +183,15 @@ public class EnemyBrain : MonoBehaviour
         }
 
         m_CurrentShootTimer += Time.deltaTime;
+    }
+
+    IEnumerator DisableCollision()
+    {
+        yield return new WaitForSeconds(0.5f);
+        Debug.Log("Destroying");
+        Destroy(this.GetComponent<Rigidbody2D>());
+        this.GetComponent<CircleCollider2D>().isTrigger = true;
+        this.GetComponent<BoxCollider2D>().isTrigger = true;
     }
 
     void WallCheck()
