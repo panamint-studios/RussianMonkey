@@ -2,12 +2,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
+using UnityStandardAssets._2D;
 
 [RequireComponent(typeof(SpriteRenderer))]
 [RequireComponent(typeof(Animator))]
 public class Keypad : MonoBehaviour, IUseable
 {
-    public event Action CorrectCombination;
+    [Header("Events")]
+    public UnityEvent CorrectCombination;
 
     [Header("Sprites for Guesses")]
     [SerializeField]
@@ -48,19 +51,37 @@ public class Keypad : MonoBehaviour, IUseable
 
     public void OnUse()
     {
-        // Disable movement input unless the user hits a key
-        Debug.Assert(m_options != null);
+        if (m_active)
+        {
+            Debug.Log("stopping active");
+            StopKeypad();
+            return;
+        }
+        else
+        {
+            // Disable movement input unless the user hits a key
+            Debug.Assert(m_options != null);
+            ToggleInput(false);
+            m_animator.enabled = true;
+            m_active = true;
+            Debug.Log("active=" + m_active);
+        }
+    }
 
-        m_animator.enabled = true;
-        m_active = true;
+    private void ToggleInput(bool isEnabled)
+    {
+        var player = FindObjectOfType<Platformer2DUserControl>();
+        player.ToggleInput(isEnabled);
     }
 
     private void StopKeypad()
     {
         // Relinquish control back to the user
+        ToggleInput(true);
         m_correctInputs = 0;
         m_secondsSinceInput = 0;
         m_active = false;
+        m_animator.enabled = false;
         m_guessRenderer.sprite = null;
         m_keypadRenderer.sprite = m_waiting;
     }
@@ -84,14 +105,11 @@ public class Keypad : MonoBehaviour, IUseable
     {
         if (m_active && m_secondsSinceInput >= m_secondsToWait)
         {
-            Debug.Log("here 1 ");
             if (m_guessRenderer.sprite == null)
             {
                 ShowNewOption();
-                Debug.Log("here 2 ");
             }
 
-            Debug.Log("here 3 ");
             if (Input.GetKeyDown(KeyCode.W))
             {
                 EvaluateGuess(EKeypadChoices.W);
@@ -108,26 +126,10 @@ public class Keypad : MonoBehaviour, IUseable
             {
                 EvaluateGuess(EKeypadChoices.D);
             }
-            if (Input.GetKeyDown(KeyCode.E))
-            {
-                StopKeypad();
-            }
         }
         else if (m_active)
         {
-            Debug.Log("here 4 ");
             m_secondsSinceInput += Time.deltaTime;
-            if (Input.GetKeyDown(KeyCode.E))
-            {
-                StopKeypad();
-            }
-        }
-        else
-        {
-            if (Input.GetKeyDown(KeyCode.E))
-            {
-                OnUse();
-            }
         }
     }
 
@@ -139,7 +141,6 @@ public class Keypad : MonoBehaviour, IUseable
 
     private void EvaluateGuess(EKeypadChoices choice)
     {
-        Debug.Log("Choice=" + choice);
         if (((int)choice) == m_currentOption)
         {
             m_correctInputs += 1;
@@ -170,10 +171,12 @@ public class Keypad : MonoBehaviour, IUseable
         if (isSuccess)
         {
             m_keypadRenderer.sprite = m_success;
+            ToggleInput(true);
         }
         else
         {
             m_keypadRenderer.sprite = m_fail;
+            ToggleInput(true);
         }
         StartCoroutine(PauseThenReset());
     }

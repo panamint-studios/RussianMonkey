@@ -53,11 +53,6 @@ public class Elevator : MonoBehaviour, IUseable
 
     private void Update()
     {
-        if (m_inRange && !m_isMoving && Input.GetKeyDown(KeyCode.E))
-        {
-            OnUse();
-        }
-
         if (m_inUse && Input.GetKey(KeyCode.S))
         {
             m_MoveDownLevel?.Invoke(floor - 1);

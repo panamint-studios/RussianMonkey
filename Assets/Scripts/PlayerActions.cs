@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -13,6 +14,8 @@ public class PlayerActions : MonoBehaviour
     Transform player;
     LineRenderer lr;
     float shotTimer = 0;
+
+    private GameObject m_currentObj;
 
     // Start is called before the first frame update
     void Start()
@@ -33,6 +36,18 @@ public class PlayerActions : MonoBehaviour
         else
         {
             lr.positionCount = 0;
+        }
+
+        UseableInput();
+    }
+
+    private void UseableInput()
+    {
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            if (m_currentObj == null) return;
+            IUseable useable = m_currentObj.GetComponent<IUseable>();
+            useable.OnUse();
         }
     }
 
@@ -114,6 +129,11 @@ public class PlayerActions : MonoBehaviour
             enemy.ToggleKnockoutIcon(true);
         }
 
+        if (other.GetComponent<IUseable>() != null)
+        {
+            m_currentObj = other.gameObject;
+        }
+
         if (other.tag == "Key")
         {
             hasKey = true;
@@ -129,6 +149,11 @@ public class PlayerActions : MonoBehaviour
             EnemyBrain enemy = other.GetComponentInParent<EnemyBrain>();
             enemy.ToggleKnockoutIcon(false);
         }
+
+        if (other.gameObject == m_currentObj)
+        {
+            m_currentObj = null;
+        }
     }
 
     void OnTriggerStay2D(Collider2D other)
@@ -142,15 +167,7 @@ public class PlayerActions : MonoBehaviour
                 enemy.TakeDamage(10, false);
             }
         }
-
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            IUseable useable = (IUseable)other.GetComponent(typeof(IUseable));
-            if (useable != null)
-            {
-                useable.OnUse();
-            }
-        }
+       
         //if(other.GetComponent<>)
     }
 }
