@@ -2,12 +2,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
+using UnityStandardAssets._2D;
 
 [RequireComponent(typeof(SpriteRenderer))]
 [RequireComponent(typeof(Animator))]
 public class Keypad : MonoBehaviour, IUseable
 {
-    public event Action CorrectCombination;
+    [Header("Events")]
+    public UnityEvent CorrectCombination;
 
     [Header("Sprites for Guesses")]
     [SerializeField]
@@ -58,19 +61,27 @@ public class Keypad : MonoBehaviour, IUseable
         {
             // Disable movement input unless the user hits a key
             Debug.Assert(m_options != null);
-
+            ToggleInput(false);
             m_animator.enabled = true;
             m_active = true;
             Debug.Log("active=" + m_active);
         }
     }
 
+    private void ToggleInput(bool isEnabled)
+    {
+        var player = FindObjectOfType<Platformer2DUserControl>();
+        player.ToggleInput(isEnabled);
+    }
+
     private void StopKeypad()
     {
         // Relinquish control back to the user
+        ToggleInput(true);
         m_correctInputs = 0;
         m_secondsSinceInput = 0;
         m_active = false;
+        m_animator.enabled = false;
         m_guessRenderer.sprite = null;
         m_keypadRenderer.sprite = m_waiting;
     }
@@ -160,10 +171,12 @@ public class Keypad : MonoBehaviour, IUseable
         if (isSuccess)
         {
             m_keypadRenderer.sprite = m_success;
+            ToggleInput(true);
         }
         else
         {
             m_keypadRenderer.sprite = m_fail;
+            ToggleInput(true);
         }
         StartCoroutine(PauseThenReset());
     }
