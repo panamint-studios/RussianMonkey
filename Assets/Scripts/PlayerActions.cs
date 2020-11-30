@@ -51,7 +51,7 @@ public class PlayerActions : MonoBehaviour
 
         //if (Input.GetKeyDown(KeyCode.Mouse1))
         //{
-        //    PlayerPunch();
+        //    GameState.Instance.SetGameState(PlayerState.State.Alarm);
         //}
     }
 

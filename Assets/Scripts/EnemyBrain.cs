@@ -38,6 +38,7 @@ public class EnemyBrain : MonoBehaviour
     {
         m_Rigidbody2D = this.GetComponent<Rigidbody2D>();
         player = GameObject.FindGameObjectWithTag("Player").transform;
+        GameState.Instance.playerState.enemiesAlive++;
     }
 
     // Update is called once per frame
@@ -51,7 +52,7 @@ public class EnemyBrain : MonoBehaviour
     {
         m_Health -= damage;
 
-        if(m_Health <= 0)
+        if(m_Health <= 0 && currentState != State.Dead && currentState != State.Unconscious)
         {
             //Destroy(gameObject);
             ToggleKnockoutIcon(false);
