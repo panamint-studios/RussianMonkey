@@ -9,6 +9,7 @@ public class PlayerActions : MonoBehaviour
     public GameObject bulletPrefab;
     public GameObject fistPrefab;
     public Transform crosshair;
+    public bool hasKey;
 
     Transform player;
     LineRenderer lr;
@@ -66,7 +67,7 @@ public class PlayerActions : MonoBehaviour
 
         //if (Input.GetKeyDown(KeyCode.Mouse1))
         //{
-        //    PlayerPunch();
+        //    GameState.Instance.SetGameState(PlayerState.State.Alarm);
         //}
     }
 
@@ -133,6 +134,11 @@ public class PlayerActions : MonoBehaviour
             m_currentObj = other.gameObject;
         }
 
+        if (other.tag == "Key")
+        {
+            hasKey = true;
+            Destroy(other.gameObject);
+        }
     }
 
     void OnTriggerExit2D(Collider2D other)
