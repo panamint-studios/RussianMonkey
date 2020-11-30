@@ -8,6 +8,7 @@ public class PlayerActions : MonoBehaviour
     public GameObject bulletPrefab;
     public GameObject fistPrefab;
     public Transform crosshair;
+    public bool hasKey;
 
     Transform player;
     LineRenderer lr;
@@ -51,7 +52,7 @@ public class PlayerActions : MonoBehaviour
 
         //if (Input.GetKeyDown(KeyCode.Mouse1))
         //{
-        //    PlayerPunch();
+        //    GameState.Instance.SetGameState(PlayerState.State.Alarm);
         //}
     }
 
@@ -111,6 +112,12 @@ public class PlayerActions : MonoBehaviour
             //Display a fun little icon
             EnemyBrain enemy = other.GetComponentInParent<EnemyBrain>();
             enemy.ToggleKnockoutIcon(true);
+        }
+
+        if (other.tag == "Key")
+        {
+            hasKey = true;
+            Destroy(other.gameObject);
         }
     }
 

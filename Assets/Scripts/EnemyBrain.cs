@@ -7,6 +7,9 @@ public class EnemyBrain : MonoBehaviour
     public GameObject bulletPrefab;
     public Transform shootyHand;
     public GameObject knockoutIcon;
+    public GameObject keySprite;
+    public GameObject keyPrefab; //For dropping a key on death
+    public bool hasKey;
     private Transform player;
 
     [SerializeField] private float m_MaxSpeed = 10f;                    // The fastest the player can travel in the x axis.
@@ -38,6 +41,10 @@ public class EnemyBrain : MonoBehaviour
     {
         m_Rigidbody2D = this.GetComponent<Rigidbody2D>();
         player = GameObject.FindGameObjectWithTag("Player").transform;
+        GameState.Instance.playerState.enemiesAlive++;
+
+        if (hasKey)
+            keySprite.SetActive(true);
     }
 
     // Update is called once per frame
@@ -51,13 +58,20 @@ public class EnemyBrain : MonoBehaviour
     {
         m_Health -= damage;
 
-        if(m_Health <= 0)
+        if(m_Health <= 0 && currentState != State.Dead && currentState != State.Unconscious)
         {
             //Destroy(gameObject);
             ToggleKnockoutIcon(false);
             currentState = lethal ? State.Dead : State.Unconscious;
             EnemyTakedown enemyTakedown = this.GetComponent<EnemyTakedown>();
             enemyTakedown.PerformAction();
+
+            if (hasKey)
+            {
+                keySprite.SetActive(false);
+                Vector3 keySpawnPos = transform.position + new Vector3(0, 1, 0);
+                Instantiate(keyPrefab, keySpawnPos, keyPrefab.transform.rotation);
+            }
 
             if(m_FacingRight)
                 transform.eulerAngles = new Vector3(0, 0, 90);
