@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/ScoreCalculationScreen.unity
     guid: 100691c51f29d794b9b2aabd3a980b3b
+  - enabled: 1
+    path: Assets/Scenes/DeathScreen.unity
+    guid: fd329336568606649b9ef9d18a3a8bd2
   m_configObjects: {}
