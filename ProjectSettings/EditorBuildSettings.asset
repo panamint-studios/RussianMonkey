@@ -9,6 +9,18 @@ EditorBuildSettings:
     path: 
     guid: 00000000000000000000000000000000
   - enabled: 1
+    path: Assets/Scenes/MainMenu.unity
+    guid: 50366a34b42621e4685ef1ee52b586a1
+  - enabled: 1
+    path: Assets/Scenes/BankScene_v2.unity
+    guid: f147e3ed830310c4bb43c97aa567e7e5
+  - enabled: 1
+    path: Assets/Scenes/ScoreCalculationScreen.unity
+    guid: 100691c51f29d794b9b2aabd3a980b3b
+  - enabled: 1
+    path: Assets/Scenes/DeathScreen.unity
+    guid: fd329336568606649b9ef9d18a3a8bd2
+  - enabled: 1
     path: Assets/Scenes/BankScene_Zack.unity
     guid: f147e3ed830310c4bb43c97aa567e7e5
   m_configObjects: {}
