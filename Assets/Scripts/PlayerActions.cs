@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -12,6 +13,8 @@ public class PlayerActions : MonoBehaviour
     Transform player;
     LineRenderer lr;
     float shotTimer = 0;
+
+    private IUseable m_useable;
 
     // Start is called before the first frame update
     void Start()
@@ -32,6 +35,20 @@ public class PlayerActions : MonoBehaviour
         else
         {
             lr.positionCount = 0;
+        }
+
+        UseableInput();
+    }
+
+    private void UseableInput()
+    {
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            Debug.Log("Pressing E");
+            if (m_useable != null)
+            {
+                m_useable.OnUse();
+            }
         }
     }
 
@@ -126,6 +143,7 @@ public class PlayerActions : MonoBehaviour
 
     void OnTriggerStay2D(Collider2D other)
     {
+        Debug.Log("Trigger staying");
         if(other.tag == "Enemy_Blindspot")
         {
             if (Input.GetKeyDown(KeyCode.Mouse1))
@@ -136,14 +154,8 @@ public class PlayerActions : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            IUseable useable = (IUseable)other.GetComponent(typeof(IUseable));
-            if (useable != null)
-            {
-                useable.OnUse();
-            }
-        }
+        m_useable = other.GetComponent<IUseable>();
+       
         //if(other.GetComponent<>)
     }
 }
