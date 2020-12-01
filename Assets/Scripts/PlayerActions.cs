@@ -17,6 +17,10 @@ public class PlayerActions : MonoBehaviour
 
     private GameObject m_currentObj;
 
+    [Range(0, 20)]
+    [SerializeField]
+    private float m_handDistance = 3;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -56,7 +60,7 @@ public class PlayerActions : MonoBehaviour
         Vector3 targetPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         crosshair.position = targetPos + new Vector3(0, 0, 1);
 
-        Vector3 handPos = player.position + Vector3.Normalize(crosshair.position - player.position);
+        Vector3 handPos = player.position + (Vector3.Normalize(crosshair.position - player.position) * m_handDistance);
         shootyHand.position = new Vector3(handPos.x, handPos.y, 0);
 
 
