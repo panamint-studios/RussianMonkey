@@ -98,6 +98,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_open: {fileID: 21300000, guid: 227843511d07a1247ab876eadc517c06, type: 3}
   m_closed: {fileID: 21300000, guid: 7db3bd0b645d1274caf0c1c7fa33f8fd, type: 3}
+  m_endColor: {r: 0, g: 0, b: 0, a: 1}
+  m_fadeOutScreen: {fileID: 0}
+  m_scoreScreen: ScoreCalculationScreen
 --- !u!61 &1201975913989215814
 BoxCollider2D:
   m_ObjectHideFlags: 0
