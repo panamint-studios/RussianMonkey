@@ -46,7 +46,8 @@ public class EnemyBrain : MonoBehaviour
     {
         m_Rigidbody2D = this.GetComponent<Rigidbody2D>();
         player = GameObject.FindGameObjectWithTag("Player").transform;
-        GameState.Instance.playerState.enemiesAlive++;
+        if (GameState.Instance != null)
+            GameState.Instance.playerState.enemiesAlive++;
 
         if (hasKey)
             keySprite.SetActive(true);
