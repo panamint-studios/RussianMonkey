@@ -180,6 +180,7 @@ public class EnemyBrain : MonoBehaviour
             Quaternion q = Quaternion.AngleAxis(angle, Vector3.forward);
 
             GameObject bullet = Instantiate(bulletPrefab, shootyHand.position, q);
+            bullet.GetComponent<ProjectileController>().canHitPlayer = true;
             Destroy(bullet, 1f);
 
             m_CurrentShootTimer = 0;
