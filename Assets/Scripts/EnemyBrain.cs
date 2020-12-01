@@ -37,13 +37,17 @@ public class EnemyBrain : MonoBehaviour
     private float m_ShootCooldownDuration;
     private float m_CurrentShootTimer;
 
+    [Range(0, 20)]
+    [SerializeField]
+    private float m_handDistance = 3;
 
     // Start is called before the first frame update
     void Start()
     {
         m_Rigidbody2D = this.GetComponent<Rigidbody2D>();
         player = GameObject.FindGameObjectWithTag("Player").transform;
-        GameState.Instance.playerState.enemiesAlive++;
+        if (GameState.Instance != null)
+            GameState.Instance.playerState.enemiesAlive++;
 
         if (hasKey)
             keySprite.SetActive(true);
@@ -66,6 +70,7 @@ public class EnemyBrain : MonoBehaviour
             ToggleKnockoutIcon(false);
             currentState = lethal ? State.Dead : State.Unconscious;
             EnemyTakedown enemyTakedown = this.GetComponent<EnemyTakedown>();
+            GetComponent<Animator>().enabled = false;
             enemyTakedown.PerformAction();
             StartCoroutine("DisableCollision");
 
@@ -171,7 +176,7 @@ public class EnemyBrain : MonoBehaviour
             //Debug.Log("Shooting!!!");
             Vector3 shootDir = shootyHand.position - player.position;
 
-            Vector3 handPos = transform.position + Vector3.Normalize(player.position - transform.position);
+            Vector3 handPos = transform.position + (Vector3.Normalize(player.position - transform.position) * m_handDistance);
             shootyHand.position = new Vector3(handPos.x, handPos.y, 0);
 
             float randomOffset = Random.Range(-1f, 1f);

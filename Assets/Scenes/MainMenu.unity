@@ -1012,7 +1012,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_gameScene: BankSceneFinal
-  m_tutorialScene: 
+  m_tutorialScene: TutorialArea
   m_modal: {fileID: 487255496}
 --- !u!82 &1092534208
 AudioSource:

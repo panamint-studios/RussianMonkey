@@ -19,7 +19,7 @@ public class EnemyTakedown : MonoBehaviour, IAction
 
     public void PerformAction()
     {
-        if(enemyBrain.currentState == EnemyBrain.State.Dead)
+        if(enemyBrain.currentState == EnemyBrain.State.Dead && GameState.Instance != null)
         {
             GameState.Instance.playerState.enemiesKilled++;
             GameState.Instance.playerState.enemiesAlive--;
