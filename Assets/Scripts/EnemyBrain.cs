@@ -10,6 +10,7 @@ public class EnemyBrain : MonoBehaviour
     public GameObject keySprite;
     public GameObject keyPrefab; //For dropping a key on death
     public bool hasKey;
+    public bool tutorialMode;
     private Transform player;
 
     [SerializeField] private float m_MaxSpeed = 10f;                    // The fastest the player can travel in the x axis.
@@ -20,7 +21,8 @@ public class EnemyBrain : MonoBehaviour
         Wait,
         Attacking,
         Dead,
-        Unconscious
+        Unconscious,
+        Tutorial
     }
 
     public State currentState = State.Patrolling;
@@ -103,7 +105,8 @@ public class EnemyBrain : MonoBehaviour
         {
             case State.Patrolling:
                 WallCheck();
-                EnemyCheck();
+                if(!tutorialMode)
+                    EnemyCheck();
                 break;
             case State.Wait:
                 m_CurrentWaitTimer += Time.deltaTime;

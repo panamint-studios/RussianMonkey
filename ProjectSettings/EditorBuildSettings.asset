@@ -12,7 +12,7 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: 50366a34b42621e4685ef1ee52b586a1
   - enabled: 1
-    path: Assets/Scenes/BankScene_v2.unity
+    path: Assets/Scenes/BankScene_Zack.unity
     guid: f147e3ed830310c4bb43c97aa567e7e5
   - enabled: 1
     path: Assets/Scenes/ScoreCalculationScreen.unity
@@ -23,4 +23,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/BankScene_Zack.unity
     guid: f147e3ed830310c4bb43c97aa567e7e5
+  - enabled: 1
+    path: Assets/Scenes/TutorialArea.unity
+    guid: 4004237d21b821b4686b4987a5611c5a
+  - enabled: 1
+    path: Assets/Scenes/BankSceneFinal.unity
+    guid: 85aa923458935d14d8384cea514e45f9
   m_configObjects: {}
