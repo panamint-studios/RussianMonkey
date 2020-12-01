@@ -55,14 +55,9 @@ public class ExitPath : MonoBehaviour
     {
         Vector2 curVec = (exit.transform.position - player.transform.position);
         curVec.Normalize();
-        var start = m_distanceFromPlayer * curVec;
-        var end = (m_distanceToBounce * curVec) + start;
+        var start = (m_distanceFromPlayer * curVec);
+        var end = ((m_distanceToBounce * curVec) + start);
         transform.localPosition = Vector2.Lerp(start, end, step);
-        //Quaternion lookRot = Quaternion.LookRotation(curVec);
-        //lookRot.eulerAngles = new Vector3(
-        //    0,
-        //    0,
-        //    -lookRot.eulerAngles.x);
         float angle = Mathf.Atan2(curVec.y, curVec.x) * Mathf.Rad2Deg;
         Quaternion q = Quaternion.AngleAxis(angle, Vector3.forward);
         q.eulerAngles = new Vector3(
