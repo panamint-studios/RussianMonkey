@@ -87,12 +87,13 @@ public class ScoreCalculationScreen : MonoBehaviour
     private IEnumerator TallyScore(GameObject obj, int goal, Action callback=null)
     {
         float elapsedTime = 0;
+        float scaledTime = Math.Min((TALLY_TIME / 10000) * goal, TALLY_TIME);
         Text text = obj.GetComponent<Text>();
 
-        while (elapsedTime < TALLY_TIME)
+        while (elapsedTime < scaledTime)
         {
             
-            text.text = ((int)Mathf.Lerp(0, goal, elapsedTime / TALLY_TIME)).ToString();
+            text.text = ((int)Mathf.Lerp(0, goal, elapsedTime / scaledTime)).ToString();
             elapsedTime += Time.deltaTime;
             yield return null;
         }
