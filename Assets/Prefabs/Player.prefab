@@ -273,8 +273,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d08f91df3bd212f429df17f53ce2f364, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_MaxSpeed: 10
-  m_JumpForce: 800
+  m_MaxSpeed: 5
+  m_JumpForce: 600
   m_CrouchSpeed: 0.25
   m_AirControl: 1
   m_WhatIsGround:
@@ -334,6 +334,7 @@ MonoBehaviour:
   bulletPrefab: {fileID: 5489804166875893124, guid: 270d590b571667745866852495e3d067, type: 3}
   fistPrefab: {fileID: 8552883046249581759, guid: e98748e1c3b58ed499c6bc015254267f, type: 3}
   crosshair: {fileID: 5411388962791969228}
+  hasKey: 0
 --- !u!1 &5411388962121489485
 GameObject:
   m_ObjectHideFlags: 0
