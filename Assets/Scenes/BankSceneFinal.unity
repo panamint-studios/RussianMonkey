@@ -862,7 +862,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 510074285, guid: 3ede0f120593f27449f94f0a72c4409c, type: 3}
       propertyPath: hasKey
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2194880428963781099, guid: 3ede0f120593f27449f94f0a72c4409c, type: 3}
       propertyPath: m_Name
@@ -2547,6 +2547,7 @@ GameObject:
   - component: {fileID: 853872629}
   - component: {fileID: 853872628}
   - component: {fileID: 853872630}
+  - component: {fileID: 853872631}
   m_Layer: 8
   m_Name: Tilemap_base
   m_TagString: Untagged
@@ -13955,6 +13956,27 @@ TilemapCollider2D:
   m_Offset: {x: 0, y: 0}
   m_MaximumTileChangeCount: 1000
   m_ExtrusionFactor: 0.00001
+--- !u!50 &853872631
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 853872626}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 7
 --- !u!1 &877727784
 GameObject:
   m_ObjectHideFlags: 0
@@ -47426,7 +47448,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5411388962121908331, guid: 4a8d26b5051537845a66f78c0fecfbb4, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 18.2
+      value: -11.8
       objectReference: {fileID: 0}
     - target: {fileID: 5411388962121908331, guid: 4a8d26b5051537845a66f78c0fecfbb4, type: 3}
       propertyPath: m_LocalPosition.z
@@ -47928,6 +47950,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2064115316}
     m_Modifications:
+    - target: {fileID: 510074285, guid: 3ede0f120593f27449f94f0a72c4409c, type: 3}
+      propertyPath: hasKey
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2194880428963781099, guid: 3ede0f120593f27449f94f0a72c4409c, type: 3}
       propertyPath: m_Name
       value: Enemy (7)
