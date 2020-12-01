@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class VaultMoney : MonoBehaviour, IUseable
 {
     public Image fillupBar;
+    public GameObject eKey;
     public float m_fillDuration = 3.5f;
     public float m_fillAmount;
     public int m_value = 100;
@@ -38,6 +39,7 @@ public class VaultMoney : MonoBehaviour, IUseable
             {
                 isActivated = false;
                 m_fillAmount = 0;
+                eKey.SetActive(true);
             }
         }
     }
@@ -45,5 +47,6 @@ public class VaultMoney : MonoBehaviour, IUseable
     public void OnUse()
     {
         isActivated = true;
+        eKey.SetActive(false);
     }
 }
