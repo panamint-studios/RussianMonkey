@@ -82,6 +82,8 @@ public class GameState : MonoBehaviour
         }
     }
     public PlayerState playerState { get; private set; }
+    public event Action AlarmActivated;
+
     private AlarmLightsController m_alarmLightsController;
     private AlarmEnemySpawner m_alarmEnemySpawner;
     private static GameState m_instance;
@@ -120,6 +122,7 @@ public class GameState : MonoBehaviour
                     m_alarmLightsController.StartAlarm();
                 if (m_alarmEnemySpawner)
                     m_alarmEnemySpawner.StartAlarm();
+                AlarmActivated?.Invoke();
                 break;
         }
         playerState.currentState = newState; 

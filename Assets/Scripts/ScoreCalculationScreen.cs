@@ -51,25 +51,26 @@ public class ScoreCalculationScreen : MonoBehaviour
 
     private void Start()
     {
-        SetCash(10000);
+        if (m_gameState == null) return;
+        SetCash(m_gameState.playerState.cash);
     }
 
     private void SetCash(int cash)
     {
         m_score += (cash * m_cashMultiplier);
-        StartCoroutine(TallyScore(m_cashText, (cash * m_cashMultiplier), () => SetEnemiesKilled(3)));
+        StartCoroutine(TallyScore(m_cashText, (cash * m_cashMultiplier), () => SetEnemiesKilled(m_gameState.playerState.enemiesKilled)));
     }
 
     private void SetEnemiesKilled(int enemiesKilled)
     {
         m_score += (enemiesKilled * m_enemiesKilledMultiplier);
-        StartCoroutine(TallyScore(m_enemiesKilledText, (enemiesKilled * m_enemiesKilledMultiplier), () => SetEnemiesSpared(3)));
+        StartCoroutine(TallyScore(m_enemiesKilledText, (enemiesKilled * m_enemiesKilledMultiplier), () => SetEnemiesSpared(m_gameState.playerState.enemiesAlive)));
     }
 
     private void SetEnemiesSpared(int enemiesSpared)
     {
         m_score += (enemiesSpared * m_enemiesSparedMultiplier);
-        StartCoroutine(TallyScore(m_enemiesSparedText, (enemiesSpared * m_enemiesSparedMultiplier), () => SetTimeBonus(167)));
+        StartCoroutine(TallyScore(m_enemiesSparedText, (enemiesSpared * m_enemiesSparedMultiplier), () => SetTimeBonus(100)));
     }
 
     private void SetTimeBonus(int time)

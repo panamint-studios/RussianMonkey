@@ -11,6 +11,8 @@ public class Keypad : MonoBehaviour, IUseable
 {
     [Header("Events")]
     public UnityEvent CorrectCombination;
+    public UnityEvent IncorrectCombination;
+    public UnityEvent StartedCombination;
 
     [Header("Sprites for Guesses")]
     [SerializeField]
@@ -54,6 +56,7 @@ public class Keypad : MonoBehaviour, IUseable
         if (m_active)
         {
             Debug.Log("stopping active");
+            IncorrectCombination?.Invoke();
             StopKeypad();
             return;
         }
@@ -65,6 +68,7 @@ public class Keypad : MonoBehaviour, IUseable
             m_animator.enabled = true;
             m_active = true;
             Debug.Log("active=" + m_active);
+            StartedCombination?.Invoke();
         }
     }
 
@@ -157,6 +161,7 @@ public class Keypad : MonoBehaviour, IUseable
         }
         else
         {
+            IncorrectCombination?.Invoke();
             DoneKeypad(false);
         }
 

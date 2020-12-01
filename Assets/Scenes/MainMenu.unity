@@ -1011,7 +1011,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9339fce7556ece747b5424427f81ffec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_gameScene: BankScene_v2
+  m_gameScene: BankSceneFinal
   m_tutorialScene: 
   m_modal: {fileID: 487255496}
 --- !u!82 &1092534208
