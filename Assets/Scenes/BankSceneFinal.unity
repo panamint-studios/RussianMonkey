@@ -332,7 +332,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_policeTimer: {fileID: 1582956818}
   m_policeTextObject: {fileID: 975311375}
-  m_exitPath: {fileID: 0}
+  m_exitPath: {fileID: 2052872774}
 --- !u!1 &90320361 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 344919759641060363, guid: f9105ba151d35f44c90561bf6f65429a, type: 3}
@@ -46543,7 +46543,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2052872775
 RectTransform:
   m_ObjectHideFlags: 0
@@ -46575,6 +46575,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72043375e98378c4ea3237becdfdb8e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_distanceThreshold: 0.5
+  m_period: 2
 --- !u!114 &2052872777
 MonoBehaviour:
   m_ObjectHideFlags: 0

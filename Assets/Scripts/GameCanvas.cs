@@ -21,7 +21,7 @@ public class GameCanvas : MonoBehaviour
 
     private void ShowExitPath()
     {
-
+        m_exitPath.SetActive(true);
     }
 
     private void ShowPoliceTimer()
