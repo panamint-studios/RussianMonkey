@@ -8,6 +8,7 @@ public class ProjectileController : MonoBehaviour
     public float damage = 5;
     public float range = 30;
     public bool lethal = true;
+    public bool canHitPlayer;
 
     // Start is called before the first frame update
     void Start()
@@ -37,7 +38,8 @@ public class ProjectileController : MonoBehaviour
         switch (col.gameObject.tag)
         {
             case ("Player"):
-                Destroy(gameObject);
+                if(canHitPlayer)
+                    Destroy(gameObject);
                 break;
             case ("Enemy"):
                 EnemyBrain enemyBrain = col.gameObject.GetComponent<EnemyBrain>();
