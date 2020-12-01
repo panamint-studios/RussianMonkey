@@ -33,5 +33,6 @@ public class ExitDoor : MonoBehaviour,
     public void SetAsExit()
     {
         m_canOpen = true;
+        GameState.Instance.currentExit = gameObject;
     }
 }

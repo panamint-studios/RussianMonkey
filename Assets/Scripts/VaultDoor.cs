@@ -14,6 +14,7 @@ public class VaultDoor : MonoBehaviour,
         if (player.hasKey)
         {
             DoorOpened?.Invoke();
+            GameState.Instance.SetGameState(PlayerState.State.Alarm);
         }
     }
 
